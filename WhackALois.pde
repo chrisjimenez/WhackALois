@@ -1,3 +1,11 @@
+/****************************************************************************
+*  WhackALois.pde
+*  
+*  By: Chris Jimenez
+*
+*  Family Guy version of Whack-A-Mole where Lois is the mole.
+****************************************************************************/
+
 import ddf.minim.spi.*;
 import ddf.minim.signals.*;
 import ddf.minim.*;
@@ -5,29 +13,31 @@ import ddf.minim.analysis.*;
 import ddf.minim.ugens.*;
 import ddf.minim.effects.*;
 
+//  Define sound objects
 Minim minim;
 AudioPlayer themeSong;
 AudioPlayer hitSound;
 AudioPlayer peterSound;
-
 AudioPlayer loisSound;
 AudioPlayer brian;
 AudioPlayer bertram;
 
+//  variables to display time on to sketch
 float startTime;
 float currentTime;
-float displayTime;//time
+float displayTime;
 float timer = 30.0;
 
-//arrays for mole
+//  arrays for mole
 Mole[] molesRow1;
 Mole[] molesRow2;
 Mole[] molesRow3;
 
+//  menu bg and gameplay bg
 PImage background;
 PImage background2;
 
-//set up start button
+//  set up start button
 PImage startButtonImage;
 PImage startButtonPressedImage;
 PImage playAgainButtonImage;
@@ -35,14 +45,15 @@ PImage playAgainButtonPressedImage;
 ImageButton startButton;
 ImageButton playAgainButton;
 
-//set up moles/characters
+//  set up moles/characters
 PImage loisMole;
 PImage brianMole;
 PImage bertramMole;
 
-int count = 140;//for the fading text
+//  for the fading text
+int count = 140;
 
-//set up hammers
+//  set up hammer
 Hammer hammer;
 PImage hammerUp;
 PImage hammerDown;
@@ -51,11 +62,15 @@ PImage hammerDown;
 float topLeftHolX = 135;
 float topLeftHolY = 135;
 
+//  Keep track of score
+int score = 0;
 
-int score = 0;//initialize to 0
+//  if gameState = 1, then the game is being played
+int gameState = 0;
 
-int gameState = 0;//if gameState = 1, then the game is being played
-
+/**
+*   setup() function 
+*/
 void setup() {
   size(600, 480);
 
@@ -135,8 +150,9 @@ void draw() {
   }
 }
 
-//=================================================================
-//starts the game
+/**
+*  STARTS THE GAME WHEN CALLED.
+*/
 void startGame() {
   cursor();
   image(background, 0, 0);
@@ -151,8 +167,9 @@ void startGame() {
 }
 
 
-//=================================================================
-//plays the game
+/**
+*  PLAYS THE GAME WHEN CALLED.
+*/
 void playGame() {
   noCursor();
   themeSong.rewind();
@@ -178,36 +195,35 @@ void playGame() {
     checkHit(molesRow3[i]);
   }
 
-  //display hammer
   hammer.display();
 
-  //dispaly fading text
   displayFadingText("You got "+ timer+" seconds!", 150, 160);
 
-  //display the commands
   displayCommands(380, 450);
 
-  //display score
   displayTimeAndScore(10, 470);
 
-
-  if (keyPressed && key =='r') {//resets the game
+  //  resets the game
+  if (keyPressed && key =='r') {
     score= 0;
     reset();
     currentTime = 0;
   }
 
-  if (keyPressed && key =='q') {//quits the game
+  //  quits the game
+  if (keyPressed && key =='q') {
     gameState = 0;
   }
 
-  if (keyPressed && key =='m') {//resets the game
+  //  resets the game
+  if (keyPressed && key =='m') {
     themeSong.pause();
   }
 }
 
-//=====================================================
-//end of the game
+/**
+*  ENDS THE GAME WHEN CALLED
+*/
 void endGame() {
   cursor();
   image(background, 0, 0);
@@ -264,8 +280,9 @@ void displayTimeAndScore(float x, float y) {
 
 
 
-//=====================================================
-//Displays the commands to reset or quit
+/**
+*  Displays the commands on to the sketch at the given xy position.
+*/
 void displayCommands(float x, float y) {
   fill(0);
   textSize(13);
