@@ -1,4 +1,13 @@
-int LOIS_LIMIT = 5;// the number of lois's allowed at one time
+/****************************************************************************
+*  WhackALois.pde
+*  
+*  By: Chris Jimenez
+*
+*  Mole class 
+****************************************************************************/
+
+// the number of lois's allowed at one time
+int LOIS_LIMIT = 5;
 
 class Mole {
 

@@ -1,10 +1,19 @@
+/****************************************************************************
+*  WhackALois.pde
+*  
+*  By: Chris Jimenez
+*
+*  Hammer class for the game.
+****************************************************************************/
+
 class Hammer {
 
-  //position of the hammer
+  // position of the hammer
   float hammerX;
   float hammerY;
 
-  int hammerState = 0;//by defult the hammer is up, 1 if the hammer is down
+  // by defult the hammer is up, 1 if the hammer is down
+  int hammerState = 0;
 
   PImage up;
   PImage down;
@@ -17,8 +26,9 @@ class Hammer {
     down.resize(100, 75);
   }
 
-  //=====================================================
-  //Displays the hammer
+  /**
+  *  Displays the hammer
+  */
   void display() {
     hammerState = 0;
     hammerX = mouseX;
