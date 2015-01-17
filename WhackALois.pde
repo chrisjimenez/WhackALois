@@ -13,7 +13,7 @@ import ddf.minim.analysis.*;
 import ddf.minim.ugens.*;
 import ddf.minim.effects.*;
 
-//  Define sound objects
+// Define sound objects
 Minim minim;
 AudioPlayer themeSong;
 AudioPlayer hitSound;
@@ -22,22 +22,22 @@ AudioPlayer loisSound;
 AudioPlayer brian;
 AudioPlayer bertram;
 
-//  variables to display time on to sketch
+// variables to display time on to sketch
 float startTime;
 float currentTime;
 float displayTime;
 float timer = 30.0;
 
-//  arrays for mole
+// arrays for mole
 Mole[] molesRow1;
 Mole[] molesRow2;
 Mole[] molesRow3;
 
-//  menu bg and gameplay bg
+// menu bg and gameplay bg
 PImage background;
 PImage background2;
 
-//  set up start button
+// set up start button
 PImage startButtonImage;
 PImage startButtonPressedImage;
 PImage playAgainButtonImage;
@@ -45,46 +45,46 @@ PImage playAgainButtonPressedImage;
 ImageButton startButton;
 ImageButton playAgainButton;
 
-//  set up moles/characters
+// set up moles/characters
 PImage loisMole;
 PImage brianMole;
 PImage bertramMole;
 
-//  for the fading text
+// for the fading text
 int count = 140;
 
-//  set up hammer
+// set up hammer
 Hammer hammer;
 PImage hammerUp;
 PImage hammerDown;
 
-//x,y position of the top the left hole, which will be used to position moles
+// x,y position of the top the left hole, which will be used to position moles
 float topLeftHolX = 135;
 float topLeftHolY = 135;
 
-//  Keep track of score
+// keep track of score
 int score = 0;
 
 //  if gameState = 1, then the game is being played
 int gameState = 0;
 
 /**
-*   setup() function 
+*  setup() function 
 */
 void setup() {
   size(600, 480);
 
-  //set up background & title
+  // set up background & title
   background = loadImage("startBackground.png");
   background2 = loadImage("gameBackground.png");
 
 
-  //load hammer
+  // load hammer
   hammerDown = loadImage("hammerdown.png");
   hammerUp = loadImage("hammerup.png");
   hammer = new Hammer(hammerUp, hammerDown);
 
-  //load moles/characters
+  // load moles/characters
   loisMole = loadImage("lois.png");
   brianMole = loadImage("brian.png");
   bertramMole = loadImage("bertram.png");
@@ -104,6 +104,7 @@ void setup() {
 
   int yDist = 80;
   int xDist = 0;
+  
   for (int i = 0; i < molesRow1.length; i++) {
     molesRow1[i] = new Mole(topLeftHolX + xDist, topLeftHolY);
     molesRow1[i].uploadImage(loisMole, brianMole, bertramMole);
@@ -121,7 +122,7 @@ void setup() {
   }
 
 
-  //button images
+  // button images
   startButtonImage = loadImage("startbutton.png");
   startButtonPressedImage = loadImage("startbutton-pressed.png");
   startButton = new ImageButton(startButtonImage, startButtonPressedImage);
@@ -130,11 +131,13 @@ void setup() {
   playAgainButtonPressedImage = loadImage("playagainbuttonpressed.png");
   playAgainButton = new ImageButton(playAgainButtonImage, playAgainButtonPressedImage);
 
-
   themeSong.rewind();
   themeSong.play();
 }
 
+/**
+*  Gets called repeatedly.
+*/
 void draw() {
   smooth();
   frameRate(30);
@@ -151,12 +154,13 @@ void draw() {
 }
 
 /**
-*  STARTS THE GAME WHEN CALLED.
+*  Starts the game and sets up start screen.
 */
 void startGame() {
   cursor();
   image(background, 0, 0);
   background.resize(600, 480);
+  
   //display start button
   startButton.resizeButton(100, 50);
   startButton.display(440, 290); 
@@ -173,14 +177,15 @@ void startGame() {
 void playGame() {
   noCursor();
   themeSong.rewind();
-  //set up background & title
+  
+  // set up background & title
   image(background2, 0, 0);
   background2.resize(600, 480);
 
   checkTimer();
 
 
-  //display the moles
+  // display the moles
   for (int i = 0; i < molesRow1.length; i++) {
     molesRow1[i].updateState();
     molesRow2[i].updateState();
@@ -203,26 +208,26 @@ void playGame() {
 
   displayTimeAndScore(10, 470);
 
-  //  resets the game
+  // resets the game
   if (keyPressed && key =='r') {
     score= 0;
     reset();
     currentTime = 0;
   }
 
-  //  quits the game
+  // quits the game
   if (keyPressed && key =='q') {
     gameState = 0;
   }
 
-  //  resets the game
+  // resets the game
   if (keyPressed && key =='m') {
     themeSong.pause();
   }
 }
 
 /**
-*  ENDS THE GAME WHEN CALLED
+*  Ends the game and displays the players score.
 */
 void endGame() {
   cursor();
@@ -243,12 +248,13 @@ void endGame() {
     text("Not Bad!", 400, 220);
   }
 
-  textSize(15);//return text size to normal
+  // return text size to normal
+  textSize(15);
 
   peterSound.rewind();
   peterSound.play();
 
-  //display start button
+  // display start button
   playAgainButton.resizeButton(100, 50);
   playAgainButton.display(440, 290); 
 
@@ -257,18 +263,23 @@ void endGame() {
   }
 }
 
-//=================================================================
-//resets the game
+/**
+*  Resets the game. 
+*/
 void reset() {
   gameState = 1;
   score =0;
 
-  //reset start time
+  // reset start time
   startTime = (millis()/1000);
 }
 
-//=====================================================
-//Displays the commands to reset or quit
+/**
+*  Displays the commands to reset or quit
+*
+*  x = x-position of the text
+*  y = y-position of the text
+*/
 void displayTimeAndScore(float x, float y) {
   fill(0);
   textSize(13);
@@ -282,6 +293,9 @@ void displayTimeAndScore(float x, float y) {
 
 /**
 *  Displays the commands on to the sketch at the given xy position.
+*
+*  x = x-position of the command
+*  y = y-position of the command
 */
 void displayCommands(float x, float y) {
   fill(0);
@@ -290,18 +304,25 @@ void displayCommands(float x, float y) {
   text("TO RESET GAME, PRESS 'R'", x, y+15);
 }
 
-//==============================================================
-//display the fading text on the screen
+/**
+*  Display the fading text on the screen
+*
+*  x = x-position of the text
+*  y = y-position of the text
+*  s = string that is to be displayed
+*/
 void displayFadingText(String s, float x, float y) {
   fill(0, 0, 0, count--);
-  textSize(25);//slightlty larger text size
+  textSize(25);
   text(s, x, y);
 }
 
-//==============================================================
-//check if there is a collision between the two characters
+/**
+*  Check if there is a collision between the two characters
+*/
 void checkHit(Mole m) {
-  //when predator and prey collide
+  
+  // when predator and prey collide
   if (m.detectHit() && m.state == 1) {
     hitSound.rewind();
     hitSound.play();
@@ -325,6 +346,10 @@ void checkHit(Mole m) {
   }
 }
 
+/**
+*  Checks the timer to determine if the game
+*  needs to go to gamestate 2.
+*/
 void checkTimer() {
   if (displayTime >= timer) {
     gameState = 2;
