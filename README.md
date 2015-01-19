@@ -11,9 +11,9 @@ All the characters were found online and resized to fit with the game. The hamme
 brianbertramloishammerdown
 
 ### Sound
-I got most the sound clips online, but I had to cut out a few of them from longer mp3 files. The funniest one is probably the “wheres my money” one, which you cna hear below. Here are some of the sounds from the game.
+I got most the sound clips online, but I had to cut out a few of them from longer mp3 files. 
 
 ### Gameplay
 As mentioned, the game is simply a family guy version of whack-a-mole. Your objective is to hit lois as much as you can. Every time you do, you get a point. You have to do this as much as you can under 30 seconds. 
 
-When Brian pops up, you get 2 points instead of 1, since Stewie probably hates Brian as much as he hates Lois. If Bertram, Stewies enemy, pops up and you hit him, you lose a point. The original game has sound(pretty hilarious too) but unfortunately that version of the game is unplayable online. Here is footage of some gameplay. 
+When Brian pops up, you get 2 points instead of 1, since Stewie probably hates Brian as much as he hates Lois. If Bertram, Stewies enemy, pops up and you hit him, you lose a point. The original game has sound(pretty hilarious too) but unfortunately that version of the game is unplayable online.
