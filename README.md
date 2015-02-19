@@ -17,3 +17,5 @@ I got most the sound clips online, but I had to cut out a few of them from longe
 As mentioned, the game is simply a family guy version of whack-a-mole. Your objective is to hit lois as much as you can. Every time you do, you get a point. You have to do this as much as you can under 30 seconds. 
 
 When Brian pops up, you get 2 points instead of 1, since Stewie probably hates Brian as much as he hates Lois. If Bertram, Stewies enemy, pops up and you hit him, you lose a point. The original game has sound(pretty hilarious too) but unfortunately that version of the game is unplayable online.
+
+You cna play the game [here](http://chrisjimenez.github.io/WhackALois/)
