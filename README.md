@@ -18,4 +18,4 @@ As mentioned, the game is simply a family guy version of whack-a-mole. Your obje
 
 When Brian pops up, you get 2 points instead of 1, since Stewie probably hates Brian as much as he hates Lois. If Bertram, Stewies enemy, pops up and you hit him, you lose a point. The original game has sound(pretty hilarious too) but unfortunately that version of the game is unplayable online.
 
-You can play the game [here](http://chrisjimenez.github.io/WhackALois/)!
+You can check out the game [here](https://www.youtube.com/watch?v=XyJutQW7XnI)!
